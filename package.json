@@ -25,6 +25,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-babel": "^3.0.0",
     "eslint-plugin-import": "^0.12.1",
-    "isomorphic-fetch": "^2.2.0"
+    "isomorphic-fetch": "^2.2.0",
+    "moment": "^2.10.6"
   }
 }
