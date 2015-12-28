@@ -1,1 +1,1 @@
-cron: node index.js
+cron: node src/email

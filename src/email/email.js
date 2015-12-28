@@ -1,11 +1,12 @@
+import moment from 'moment';
 import nodemailer from 'nodemailer';
-import getNewAdds from './getNewAdds';
+import getNewAdds from '../getNewAdds';
 
 async function sendMailNotifications() {
-  const adds = await getNewAdds();
+  const startDate = moment().subtract(1, 'hours');
+  const adds = await getNewAdds(startDate);
 
   if (adds.legth) {
-
     const transporter = nodemailer.createTransport();
     transporter.sendMail({
       from: 'crawler@cyklobazar.cz',
@@ -21,7 +22,10 @@ async function sendMailNotifications() {
         </body>\
       </html>'
     });
-
+    console.info('Notification was sent.');
+  }
+  else {
+    console.info('No new advertisments.');
   }
 }
 

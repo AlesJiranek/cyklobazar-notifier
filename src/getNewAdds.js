@@ -5,7 +5,7 @@ import moment from 'moment';
 import querystring from 'querystring';
 
 
-export default async function getNewAdds() {
+export default async function getNewAdds(startDate) {
   const filters = {
     type: 'sell',
     'filter[list_wheel_diameter_id]' : 3,
@@ -22,8 +22,7 @@ export default async function getNewAdds() {
       const dateTitle = cheerio(add).find('div.media-body > div.media-heading > small.pull-right').attr('title');
       const dateString = dateTitle.split(' ').slice(1).join(' '); // Remove string at the beggining of title (Aktualizováno / Vytvořeno)
       const addDate = moment(dateString, 'DD.MM.YYYY, HH:mm');
-      const dateToCompare = moment().subtract(1, 'hours');
 
-      return addDate.isAfter(dateToCompare);
+      return addDate.isAfter(startDate);
     }));
 }
