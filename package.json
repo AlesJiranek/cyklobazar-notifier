@@ -1,0 +1,30 @@
+{
+  "name": "cyklobazar-notifier",
+  "version": "0.1.0",
+  "license": "MIT",
+  "authors": [
+    "Aleš Jiránek"
+  ],
+  "description": "Notifications for new advetrisments on cyklobazar.cz",
+  "repository": "https://github.com/AlesJiranek/cyklobazar-notifier",
+  "private": false,
+  "engines": {
+    "node": "4.2.x"
+  },
+  "dependencies": {
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^4.1.6",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "babel-runtime": "^6.3.19",
+    "bluebird": "^3.1.1",
+    "cheerio": "^0.19.0",
+    "eslint": "^1.10.3",
+    "eslint-plugin-babel": "^3.0.0",
+    "eslint-plugin-import": "^0.12.1",
+    "isomorphic-fetch": "^2.2.0"
+  }
+}
