@@ -2,7 +2,9 @@ import Promise from 'bluebird';
 import cheerio from 'cheerio';
 import fetch from 'isomorphic-fetch';
 import moment from 'moment';
+import nodemailer from 'nodemailer';
 import querystring from 'querystring';
+
 
 const filters = {
   type: 'sell',
@@ -23,4 +25,24 @@ fetch('http://www.cyklobazar.cz/horska-kola?' + querystring.stringify(filters))
     const dateToCompare = moment().subtract(1, 'hours');
 
     return addDate.isAfter(dateToCompare);
-  }));
+  }))
+  .then(filtered => {
+    if (filtered.legth === 0)
+      return;
+
+    const transporter = nodemailer.createTransport();
+    transporter.sendMail({
+      from: 'crawler@cyklobazar.cz',
+      to: 'a.jiranek@centrum.cz',
+      subject: 'New bikes!',
+      html: '\
+      <html>\
+        <head>\
+          <link rel="stylesheet" src="http://www.cyklobazar.cz/webtemp/cssloader-152a274595de.css">\
+        </head>\
+        <body>\
+          <ul>' + filtered.html().replace(/\/uploads\//g, 'http://www.cyklobazar.cz/uploads/').replace(/href="\//g, 'href="http://www.cyklobazar.cz/') + '</ul>\
+        </body>\
+      </html>'
+    });
+  });
