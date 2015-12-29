@@ -1,1 +1,2 @@
-cron: node src/email
+email: node src/email
+push: node src/push
