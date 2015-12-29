@@ -3,10 +3,10 @@ import nodemailer from 'nodemailer';
 import getNewAdds from '../getNewAdds';
 
 async function sendMailNotifications() {
-  const startDate = moment().subtract(1, 'hours');
+  const startDate = moment().subtract(1.25, 'h');
   const adds = await getNewAdds(startDate);
 
-  if (adds.legth) {
+  if (adds.length) {
     const transporter = nodemailer.createTransport();
     transporter.sendMail({
       from: 'crawler@cyklobazar.cz',

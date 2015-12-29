@@ -4,7 +4,7 @@ import getNewAdds from '../getNewAdds';
 
 
 async function sendPushNotifications() {
-  const startDate = moment().subtract(10, 'minutes');
+  const startDate = moment().subtract(12, 'm');
   const adds = await getNewAdds(startDate);
 
   if (adds.length) {
