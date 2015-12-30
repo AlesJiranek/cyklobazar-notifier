@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import getNewAdds from '../getNewAdds';
 
 async function sendMailNotifications() {
-  const startDate = moment().subtract(1.25, 'h');
+  const startDate = moment().startOf('hour'); // Heroku is -1h from cyklobazar, so subtract is not needed
   const adds = await getNewAdds(startDate);
 
   if (adds.length) {

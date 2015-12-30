@@ -4,7 +4,7 @@ import getNewAdds from '../getNewAdds';
 
 
 async function sendPushNotifications() {
-  const startDate = moment().subtract(12, 'm');
+  const startDate = moment().add(50, 'm'); // Heroku is -1h from cyklobazar, we need to add 50 minutes to get adds for last 10 minutes
   const adds = await getNewAdds(startDate);
 
   if (adds.length) {
